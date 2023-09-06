@@ -4,96 +4,86 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"regexp"
 	"strings"
 	"sync"
 )
 
-// We have two sources:
-// Arguments as file paths --> command line like: ./solution.rb file1.txt file2.txt ...)
-// The program also accepts input on stdin (e.g. cat file1.txt | ./solution.rb).
-
-// Will contain the num of times three words are repeated
-var threeWords map[string]int
+var executable string = "word_counter"
 
 func main() {
 
-	// Create a channel to receive the result from the goroutine
-	resultChan := make(chan string, 1)
+	// Create a channel to receive results from goroutines
+	resultChan := make(chan string)
 
-	// Create a WaitGroup to wait for the goroutine to finish
+	// Create a WaitGroup to wait for all goroutines to finish
 	var wg sync.WaitGroup
 
-	// Start the goroutine to process file paths
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
+	// Extract file paths from command-line arguments
+	filePaths := os.Args[1:]
 
-		text, err := processFilePaths(os.Args[1:])
-		if err != nil {
-			log.Fatal(err)
+	// Check if command-line arguments are provided and the program name contains the executable name
+	if len(filePaths) > 0 && strings.Contains(os.Args[0], executable) {
+		// Start a goroutine for each file
+		for _, path := range filePaths {
+			wg.Add(1)
+			go func(filePath string) {
+				defer wg.Done()
+				text, err := processFile(filePath)
+				if err != nil {
+					log.Println(err)
+					return
+				}
+				resultChan <- text
+			}(path)
 		}
-		resultChan <- text
-	}()
 
-	// In the main goroutine, you can continue with other work
-	// or wait for the result from the goroutine
-	go func() {
-		wg.Wait()
-		close(resultChan)
-	}()
+		// Start a goroutine to collect results and close the channel
+		go func() {
+			wg.Wait()
+			close(resultChan)
+		}()
 
-	// Collect the result from the goroutine
-	mergedText := <-resultChan
-
-	// Now you can work with the mergedText variable
-	fmt.Println(mergedText)
-
-}
-
-// processFilePaths takes as argument different path files, open it and merge it all in one text
-func processFilePaths(filePaths []string) (text string, err error) {
-	// Check if unsufficient arguments
-	if len(filePaths) < 1 {
-		return "", fmt.Errorf("unsufficient arguments or malformed: %s", fmt.Sprintf("%s", filePaths))
-	}
-
-	// Read all files and merge it into one text
-	for _, path := range filePaths {
-		file, err := os.ReadFile(path)
-		if err != nil {
-			return "", fmt.Errorf("error opening the file: %s ", err)
+		// Merge the text from all goroutines
+		fullText := ""
+		for text := range resultChan {
+			fullText += text
 		}
-		text += " " + string(file)
+
+		cleanedText, _ := cleanText(fullText)
+
+		sequences := countTripleWordRepeats(cleanedText)
+		sortedSeq := sortRepeatedWords(sequences)
+
+		var top100 []keyValue
+		if len(sortedSeq) >= 100 {
+			top100 = sortedSeq[:100]
+		} else {
+			top100 = sortedSeq[:len(sortedSeq)-1]
+		}
+
+		// Print the top 100 elements
+		for _, kv := range top100 {
+			fmt.Printf("%d - %s\n", kv.Value, kv.Key)
+		}
+
+	} else {
+		fullText := processFromStdin()
+		cleanedText, _ := cleanText(fullText)
+
+		sequences := countTripleWordRepeats(cleanedText)
+		sortedSeq := sortRepeatedWords(sequences)
+
+		var top100 []keyValue
+		if len(sortedSeq) >= 100 {
+			top100 = sortedSeq[:100]
+		} else {
+			top100 = sortedSeq[:len(sortedSeq)-1]
+		}
+
+		// Print the top 100 elements
+		for _, kv := range top100 {
+			fmt.Printf("%d - %s\n", kv.Value, kv.Key)
+		}
 	}
 
-	text = strings.TrimSpace(text)
-
-	return text, nil
-}
-
-// mergeTexts makes an unique full text for both of the sources
-func mergeTextsOfAllSources(texts ...string) (string, error) {
-	var merged string
-	for _, text := range texts {
-		merged += " " + text
-	}
-
-	return merged, nil
-}
-
-// cleanText takes the full text generated from all files of some input source and clean it
-// removing unnecesary characters, punctuation and endlines.
-func cleanText(text string) (words []string, err error) {
-	// convert all text to lower case
-	text = strings.ToLower(text)
-
-	// Compile the regular expression
-	wordPattern := `\b[\p{L}\p{Nd}'’]+\b`
-	re := regexp.MustCompile(wordPattern)
-
-	// Find all matches in the text
-	words = re.FindAllString(text, -1)
-
-	return words, nil
 }
