@@ -1,23 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"regexp"
 	"sort"
 	"strings"
 )
 
-// mergeTexts makes an unique full text for both of the sources
-func mergeTextsOfAllSources(texts ...string) (string, error) {
-	var merged string
-	for _, text := range texts {
-		merged += " " + text
-	}
-
-	return merged, nil
-}
-
-// cleanText takes the full text generated from all files of some input source and clean it
-// removing unnecesary characters, punctuation and endlines.
+// Takes the full text generated from all files of some input source and clean it removing unnecesary characters, punctuation and endlines.
 func cleanText(text string) (cleanedText string, err error) {
 	// convert all text to lower case
 	text = strings.ToLower(text)
@@ -34,21 +24,22 @@ func cleanText(text string) (cleanedText string, err error) {
 	return cleanedText, nil
 }
 
-func countTripleWordRepeats(text string) map[string]int {
+// Gets how many times N consecutives words are repeated within a text
+func getRepeatedSequences(text string, numOfWords int) map[string]int {
 	words := strings.Fields(text)
-	if len(words) < 3 {
+	if len(words) < numOfWords {
 		return nil // Not enough words to form triples
 	}
 
-	tripleCounts := make(map[string]int)
+	repeatedSeqs := make(map[string]int)
 
-	for i := 0; i < len(words)-2; i++ {
-		triple := words[i : i+3]
-		tripleStr := strings.Join(triple, " ")
-		tripleCounts[tripleStr]++
+	for i := 0; i < len(words)-(numOfWords-1); i++ {
+		sequence := words[i : i+numOfWords]
+		seqStr := strings.Join(sequence, " ")
+		repeatedSeqs[seqStr]++
 	}
 
-	return tripleCounts
+	return repeatedSeqs
 }
 
 type keyValue struct {
@@ -56,7 +47,8 @@ type keyValue struct {
 	Value int
 }
 
-func sortRepeatedWords(m map[string]int) []keyValue {
+// Order the repeated sequences in descending order
+func sortSequences(m map[string]int) []keyValue {
 	// Convert the map to a slice of key-value pairs
 	var keyValueSlice []keyValue
 	for key, value := range m {
@@ -70,4 +62,19 @@ func sortRepeatedWords(m map[string]int) []keyValue {
 	})
 
 	return keyValueSlice
+}
+
+func displayMostRepeatedWords(sortedSequences []keyValue, largeOfListToDisplay int) {
+	var topWords []keyValue
+	if len(sortedSequences) >= largeOfListToDisplay {
+		topWords = sortedSequences[:100]
+	} else {
+		topWords = sortedSequences[:len(sortedSequences)-1]
+	}
+
+	// Print the top 100 elements
+	for _, kv := range topWords {
+		fmt.Printf("%d - %s\n", kv.Value, kv.Key)
+	}
+
 }
