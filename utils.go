@@ -28,7 +28,7 @@ func cleanText(text string) (cleanedText string, err error) {
 func getRepeatedSequences(text string, numOfWords int) map[string]int {
 	words := strings.Fields(text)
 	if len(words) < numOfWords {
-		return nil // Not enough words to form triples
+		return nil // Not enough words to form the word patterns
 	}
 
 	repeatedSeqs := make(map[string]int)
@@ -67,14 +67,13 @@ func sortSequences(m map[string]int) []keyValue {
 func displayMostRepeatedWords(sortedSequences []keyValue, largeOfListToDisplay int) {
 	var topWords []keyValue
 	if len(sortedSequences) >= largeOfListToDisplay {
-		topWords = sortedSequences[:100]
+		topWords = sortedSequences[:largeOfListToDisplay]
 	} else {
 		topWords = sortedSequences[:len(sortedSequences)-1]
 	}
 
-	// Print the top 100 elements
+	// Print the top N repeated sequences of words
 	for _, kv := range topWords {
 		fmt.Printf("%d - %s\n", kv.Value, kv.Key)
 	}
-
 }
