@@ -13,11 +13,12 @@ Word Counter is a program that receives one or more text files from different ty
 - [Bonus and Extras](#bonus)
 - [Future Iterations and Comments](#future-iterations)
 
-
+<a name="getting-started"></a>
 ## Getting Started
 
 Before starting, locate the folder with the program in a directory you know and read the README carefully.
 
+<a name="prerequisites"></a>
 ### Prerequisites
 
 - You must have Golang installed on your computer. Download it here: https://go.dev/doc/install
@@ -31,51 +32,53 @@ If you don't have it, download it from here: https://code.visualstudio.com/downl
 
 ### Installation 
 
-1) Download the folder word-counter-master
+1) Download the folder `word-counter-master`
 2) Locate it in a directory of your preference in your machine
 3) Open the folder with Visual Studio Code or your prefered Code Editor
-4) Open the console (Git, Windows Shell or the one you use) and move to the root directory of the program using the cd command.
-5) Once in the root directory, we need to pull all the necessary packages for the program. In the console put this command: go mod tidy 
-6) Once all the packages where downloaded, press Alt + s (if you installed the Go extension in VSC), this will save and format and automatically add the packages in the import statement at the start of each .go file. Otherwise, you must add it manually.
+4) Open the console (Git, Windows Shell or the one you use) and move to the root directory of the program using the `cd` command.
+5) Once in the root directory, we need to pull all the necessary packages for the program. In the console put this command: `go mod tidy`
+6) Once all the packages where downloaded, press `Alt + s` (if you installed the Go extension in VSC), this will save and format and automatically add the packages in the import statement at the start of each `.go` file. Otherwise, you must add it manually.
 
 ## Project Structure
 
 The folder structure goes as follows with a brief description of each functionality:
+```
 word_counter 				--> main folder
 	-texts 				--> contains different .txt files you can use as input. Comes with the number of the most repeated words.
-	-main.go 				--> initilizes the program
+	-main.go 			--> initilizes the program
 	-word_counter.go 		--> provides the functions to handle each of the different types of inputs as argument or from stdin
-	-word_counter_test.go  --> provides differente test scenarios for the word_counter.go functions
+	-word_counter_test.go  		--> provides differente test scenarios for the word_counter.go functions
 	-utils.go 			--> provides tranversal utility functions: merge texts, clean texts, get repeated words, sort and display the result
-	-utils_test.go 		--> test the previous functions mentioned
+	-utils_test.go 			--> test the previous functions mentioned
 	-word_counter.exe		--> executable we are going to use run the app.
+```
 
 ## Usage
 
 We have two types of inputs to handle:
-1) From command line arguments. For example in the console: ./executable arg1 arg2 ... argN 
+1) From command line arguments. For example in the console: `./executable arg1 arg2 ... argN` 
 This method will take as argument all of the commands after the executable.
 
 How to try it:
-1.2 Open the console (git bash, windows shell, etc). Move to the root directory where is the executable word_counter.exe located.
-1.3 Look into the texts directory the file names.
-1.2 In console type the command: ./word_counter ./texts/"the_text_name_1" ./texts/"the_text_name_2" and so on...
-1.3 In the console will be showed the 100 most repeated 3 words from all the .txt files passed as arguments.
+- Open the console (git bash, windows shell, etc). Move to the root directory where is the executable word_counter.exe located.
+- Look into the texts directory the file names.
+- In console type the command: `./word_counter ./texts/"the_text_name_1" ./texts/"the_text_name_2"` and so on...
+- In the console will be showed the 100 most repeated 3 words from all the `.txt` files passed as arguments.
 
-2) From stdin (standar input). For example in the console: cat arg1 arg2 ... argN | ./executable
+2) From stdin (standar input). For example in the console: `cat arg1 arg2 ... argN | ./executable`
 This method will concatenate the content of the arguments and then pass that content to the executable.
 
 How to try it:
-2.1 Same two first steps from the previous method.
-2.2 In console type the command: cat ./texts/"the_text_name_1" ./texts/"the_text_name_2" and so on..
-2.3 If you want to get all the texts from the same directory you can use: cat ./texts/*
-2.4 See the 100 most repeated 3 words from all the .txt files processed from stdin.
+- Same two first steps from the previous method.
+- In console type the command: `cat ./texts/"the_text_name_1" ./texts/"the_text_name_2"` and so on..
+- If you want to get all the texts from the same directory you can use: `cat ./texts/*`
+- See the 100 most repeated 3 words from all the .txt files processed from stdin.
 
 ## Testing
-1) Open VSC, go to the _test.go file you want to test.
+1) Open VSC, go to the `_test.go` file you want to test.
 2) Look the functions, the descriptions and how it works
 3) Click run test above the function you want to try
-4) Or click in run file tests at the top of the _test.go file to run all the test of that file. 
+4) Or click in run file tests at the top of the `_test.go` file to run all the test of that file. 
 5) Check the response from the console.
 
 ## Bonus and Extras
