@@ -13,13 +13,17 @@ Word Counter is a program that receives one or more text files from different ty
 - [Bonus and Extras](#bonus)
 - [Future Iterations and Comments](#future-iterations)
 
+--------------------------------
+
 <a name="getting-started"></a>
 ## Getting Started
 
 Before starting, locate the folder with the program in a directory you know and read the README carefully.
 
+--------------------------------
+
 <a name="prerequisites"></a>
-### Prerequisites
+## Prerequisites
 
 - You must have Golang installed on your computer. Download it here: https://go.dev/doc/install
 
@@ -30,8 +34,10 @@ If you don't have it, download it from here: https://code.visualstudio.com/downl
 
 - It is not mandatory, but it is recommended that you have Git installed on your computer. If you don't have it, download it here: https://git-scm.com/downloads
 
+--------------------------------
+
 <a name="installation"></a>
-### Installation 
+## Installation 
 
 1) Download the folder `word-counter-master`
 2) Locate it in a directory of your preference in your machine
@@ -39,6 +45,8 @@ If you don't have it, download it from here: https://code.visualstudio.com/downl
 4) Open the console (Git, Windows Shell or the one you use) and move to the root directory of the program using the `cd` command.
 5) Once in the root directory, we need to pull all the necessary packages for the program. In the console put this command: `go mod tidy`
 6) Once all the packages where downloaded, press `Alt + s` (if you installed the Go extension in VSC), this will save and format and automatically add the packages in the import statement at the start of each `.go` file. Otherwise, you must add it manually.
+
+--------------------------------
 
 <a name="project-structure"></a>
 ## Project Structure
@@ -55,11 +63,13 @@ word_counter 				--> main folder
 	-word_counter.exe		--> executable we are going to use run the app.
 ```
 
+--------------------------------
+
 <a name="usage"></a>
 ## Usage
 
 We have two types of inputs to handle:
-1) From command line arguments. For example in the console: `./executable arg1 arg2 ... argN` 
+1) **From command line arguments** For example in the console: `./executable arg1 arg2 ... argN` 
 This method will take as argument all of the commands after the executable.
 
 How to try it:
@@ -68,14 +78,21 @@ How to try it:
 - In console type the command: `./word_counter ./texts/"the_text_name_1" ./texts/"the_text_name_2"` and so on...
 - In the console will be showed the 100 most repeated 3 words from all the `.txt` files passed as arguments.
 
-2) From stdin (standar input). For example in the console: `cat arg1 arg2 ... argN | ./executable`
+![image](https://github.com/zetacoder/word_counter/assets/71451124/160402fe-945d-4cfd-965c-2431fd0cf28f)
+
+2) **From STDIN (standar input)** For example in the console: `cat arg1 arg2 ... argN | ./executable.exe`
 This method will concatenate the content of the arguments and then pass that content to the executable.
 
 How to try it:
 - Same two first steps from the previous method.
-- In console type the command: `cat ./texts/"the_text_name_1" ./texts/"the_text_name_2"` and so on..
+- In console type the command: `cat ./texts/"the_text_name_1" ./texts/"the_text_name_2" ... | ./word_counter.exe `
 - If you want to get all the texts from the same directory you can use: `cat ./texts/*`
 - See the 100 most repeated 3 words from all the .txt files processed from stdin.
+
+![image](https://github.com/zetacoder/word_counter/assets/71451124/3edc8f21-7a4b-4a56-a705-6816d57a8b4b)
+
+
+--------------------------------
 
 <a name="testing"></a>
 ## Testing
@@ -85,12 +102,16 @@ How to try it:
 4) Or click in run file tests at the top of the `_test.go` file to run all the test of that file. 
 5) Check the response from the console.
 
+--------------------------------
+
 <a name="bonus"></a>
 ## Bonus and Extras
 - Added gorutines to maximize speed for files as arguments inputs.
 - Added configuration variables, so you can set:
 	-number of consecutives word you want to consider (default is 3)
 	-number of sequences showed in the top list (default 100)
+  
+--------------------------------
 
 <a name="future-iterations"></a>
 ## Future Iterations and comments
@@ -98,6 +119,7 @@ How to try it:
 Implement a rule on how to handle when repeated sequence of words have the same value and are in conflict to appear in the last top words. 
 For example, if the 100th and 101th sequence repeats the same times, define which rule to use to determine which key is considered and which excluded. Currently, I decided to order in alphabetic order for that case, from A to Z for readability.
 
+--------------------------------
 
 
 
