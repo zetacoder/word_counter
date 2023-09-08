@@ -30,6 +30,7 @@ If you don't have it, download it from here: https://code.visualstudio.com/downl
 
 - It is not mandatory, but it is recommended that you have Git installed on your computer. If you don't have it, download it here: https://git-scm.com/downloads
 
+<a name="installation"></a>
 ### Installation 
 
 1) Download the folder `word-counter-master`
@@ -39,6 +40,7 @@ If you don't have it, download it from here: https://code.visualstudio.com/downl
 5) Once in the root directory, we need to pull all the necessary packages for the program. In the console put this command: `go mod tidy`
 6) Once all the packages where downloaded, press `Alt + s` (if you installed the Go extension in VSC), this will save and format and automatically add the packages in the import statement at the start of each `.go` file. Otherwise, you must add it manually.
 
+<a name="project-structure"></a>
 ## Project Structure
 
 The folder structure goes as follows with a brief description of each functionality:
@@ -53,6 +55,7 @@ word_counter 				--> main folder
 	-word_counter.exe		--> executable we are going to use run the app.
 ```
 
+<a name="usage"></a>
 ## Usage
 
 We have two types of inputs to handle:
@@ -74,6 +77,7 @@ How to try it:
 - If you want to get all the texts from the same directory you can use: `cat ./texts/*`
 - See the 100 most repeated 3 words from all the .txt files processed from stdin.
 
+<a name="testing"></a>
 ## Testing
 1) Open VSC, go to the `_test.go` file you want to test.
 2) Look the functions, the descriptions and how it works
@@ -81,12 +85,14 @@ How to try it:
 4) Or click in run file tests at the top of the `_test.go` file to run all the test of that file. 
 5) Check the response from the console.
 
+<a name="bonus"></a>
 ## Bonus and Extras
 - Added gorutines to maximize speed for files as arguments inputs.
 - Added configuration variables, so you can set:
 	-number of consecutives word you want to consider (default is 3)
 	-number of sequences showed in the top list (default 100)
 
+<a name="future-iterations"></a>
 ## Future Iterations and comments
 
 Implement a rule on how to handle when repeated sequence of words have the same value and are in conflict to appear in the last top words. 
