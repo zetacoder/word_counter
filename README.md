@@ -106,10 +106,11 @@ How to try it:
 
 <a name="bonus"></a>
 ## Bonus and Extras
+
 - Added gorutines to maximize speed for files as arguments inputs.
 - Added configuration variables, so you can set it on `word_counter.go`:
-	-number of consecutives word you want to consider (default is 3)
-	-number of sequences showed in the top list (default 100)
+* number of consecutives word you want to consider (default is 3)
+* number of sequences showed in the top list (default 100)
   
 ![image](https://github.com/zetacoder/word_counter/assets/71451124/9a0ac2c2-fdb5-4414-b477-8047384f949b)
 
