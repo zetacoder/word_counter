@@ -1,0 +1,124 @@
+Top sequence of words:
+51 - golang is concurrent
+51 - golang is fast
+47 - concurrent golang is
+47 - is concurrent golang
+41 - fast golang is
+41 - is fast golang
+...
+
+
+Each block have 10 times of the 3 sequences:
+
+golang is concurrent
+gOlAng Is     concurrent...!!!!!!!!!11sdasdasdasddas
+golanG is      !!---         .. concurrent
+golang  is concurrent
+goLang          ...........            iS      ........     concUrrent aksnmdkasmndknas!!!..
+golang is       concurrent
+golang is        ---...    concurrent -------------> sadasdasdasd
+golang is concurrent
+golang is concurrent
+golang is concurrent
+
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+
+golang is CONCURRENT
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang is concurrent
+golang iS concurrent
+golang is concurrent
+goLang .............is ................ concurrent dkaskaskdbaskd ---> ....................!! ashdkjashkjdhasjkdha 
+golang is concurrent
+golang is concurrent
+
+----------------------------------------
+
+golang is fast
+golanG                                                         is FAST aksddkjhaskjdhjkas some unnecesary wordsss 
+golang is faSt...!!!!!!!!!!!!!!!!!!1
+goLang is fast 983289e2 klasdkljasjkldjasl jlkj
+golang is Fast
+golang is fast
+golang is fast
+golang Is Fast
+golang ....!         is fast %%%&&&
+                    golang                                                       is fast
+
+golang is fast
+golang is fast
+golang is fast
+golang is fast
+golang is fast
+golang is fast
+golang is fast
+golang is fast
+golang is fast
+golang is fast
+
+golang is fasT
+golang is       fast
+golang is fast
+golang is fast
+golang is fast
+golang is fast
+golang       is fast
+golang is fast
+golang is fast
+golang is  fast
+
+golang is fast
+golang Is fast...!! 98u98daskj
+golang is fast
+golang is fast
+golang is fast ñññ asdkdkjashdkjahs
+golang is               fast
+golang is fast
+golang is fAst asjkdhkajshdkjashkjas
+golang is fast
+golang is fast
+
+golang is       fast ...93r88923 kdsjhadjkashkj
+golang is fast
+golang is fast sakmdkmasndk 
+golang is fast
+golang is fast
+golang is fast
+golang is fast ,masnd,masnd,
+golang is fast
+golang is fast
+golang is fast
+

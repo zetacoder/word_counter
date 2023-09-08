@@ -1,9 +1,9 @@
 package main
 
-import "log"
+import "fmt"
 
 func main() {
 	if err := runWordCounter(); err != nil {
-		log.Fatal(err)
+		fmt.Println(err.Error())
 	}
 }
