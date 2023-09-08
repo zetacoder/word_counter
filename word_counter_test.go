@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+// TestNoTextsFromArguments tests the case when no arguments are provided
 func TestNoTextsFromArguments(t *testing.T) {
 	args := ""
 	_, err := getInputArguments(args)
@@ -12,6 +13,7 @@ func TestNoTextsFromArguments(t *testing.T) {
 	}
 }
 
+// TestOneTextFromArguments tests the case when one argument is provided
 func TestOneTextFromArguments(t *testing.T) {
 	arg := "./texts/clean_code.txt"
 	text, err := getInputArguments(arg)
@@ -139,8 +141,9 @@ func TestOneTextFromArguments(t *testing.T) {
 			t.Errorf("Mismatch at index %d: Expected %v, but got %v", i, exp, sortedSequences[i])
 		}
 	}
-}
+}	
 
+// TestMultipleTextsFromArguments tests the case when multiple arguments are provided
 func TestMultipleTextsFromArguments(t *testing.T) {
 	args := []string{"./texts/clean_code.txt", "./texts/dogs_and_cats.txt", "./texts/golang_is.txt", "./texts/gutenberg.txt"}
 	var texts string
@@ -222,6 +225,7 @@ func TestEmptyText(t *testing.T) {
 	}
 }
 
+// TestOneTextWithSameValues tests the case when sequences are repeated the same number of times
 func TestOneTextWithSameValues(t *testing.T) {
 	text := "The quick brOwn Fox Jumps !!over the. lazy dog"
 	text, err := cleanText(text)

@@ -4,6 +4,7 @@ import (
 	"testing"
 )
 
+// TestCleanText tests the cleanText function, removing punctuation, endlines and converting all text to lower case
 func TestCleanText(t *testing.T) {
 	dirtyTexts := []string{`ThE............. qUick ---!!<<>>	
 	bRown foX Jumps !!over !!the @@lazy dog`, `some ..-.,<<+++ Skills !!???¡¡¿¡reQuireS
@@ -27,6 +28,7 @@ func TestCleanText(t *testing.T) {
 	}
 }
 
+// TestGetRepeatedSequences tests the getRepeatedSequences function, getting how many times N consecutives words are repeated within a text 
 func TestGetRepeatedSequences(t *testing.T) {
 	text1 := "Backend .-.-.-.-. is cool! backend is cOOl! backend is cool! backend is cool! backend -.,-.,-.,-.,!!)) is cool!"
 	text2 := "sometimes Is useful to be persistent in studying and practicing even if it is hard. SomeTimes is useful to learn from others!"
@@ -66,6 +68,7 @@ func TestGetRepeatedSequences(t *testing.T) {
 
 }
 
+// TestSortSequence tests the sortSequences function, sorting the sequences of words by the number of times they are repeated if the same value, order alphabetically
 func TestSortSequence(t *testing.T) {
 	sequenceCounter := map[string]int{
 		"sometimes is useful":   2,

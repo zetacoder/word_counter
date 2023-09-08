@@ -75,7 +75,7 @@ func runWordCounter() error {
 	return nil
 }
 
-// Process the input, get repeated words and displays it
+// Process the input, get repeated words, sort and displays it
 func process(texts string) error {
 	text, err := cleanText(texts)
 	if err != nil {

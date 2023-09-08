@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Utils contains functions that are used indepently from the input source
+// Utils contains functions that are used indepently of the input source to clean, count and sort the words
 
 // Struct that holds the sequence of words and how many times it is repeated
 type keyValue struct {
